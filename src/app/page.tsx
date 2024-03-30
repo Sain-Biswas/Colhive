@@ -1,11 +1,11 @@
-import getCurrentUser from "@/resources/actions/getCurrentUser";
-
-
-export default async function Home() {
-  const data = await getCurrentUser();
+import { Home } from "@/components/Home";
+import { Footer } from "@/components/Footer";
+export default async function Page() {
   return (
     <main >
-      {JSON.stringify(data)}
+      <Home/>
+      <div className="w-full h-px bg-[#38d1d1] my-5"/>
+      <Footer/>
     </main>
   );
 }
