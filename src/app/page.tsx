@@ -1,9 +1,15 @@
+
 import {Navbar} from "../components/Navbar";
-export default function Home() {
+import { Home } from "../components/Home";
+import { Footer } from "../components/Footer";
+
+export default function First() {
   return (
     <main >
      <div >
-        <Navbar/>
+        {/* <Navbar/> */}
+        <Home/>
+        <Footer/>
      </div>
     </main>
   );
