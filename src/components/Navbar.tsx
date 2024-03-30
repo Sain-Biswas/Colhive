@@ -18,6 +18,7 @@ import { headers } from "next/headers"
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { ModeToggle } from "./mode-toggle";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -61,7 +62,7 @@ export function Navbar() {
   const router = useRouter();
 
   return (
-    <header className="h-12 border-b-2 bg-white ">
+    <header className="h-12 border-b-2">
       <div className="mx-auto flex max-w-full items-center h-full justify-between px-6 lg:px-8" aria-label="Global">
         <div className="flex ">
           <a href="#" className="-m-1.5 p-1.5">
@@ -134,8 +135,9 @@ export function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <div className="Login ">
-          <Button variant='ghost' onClick={() => router.push('/authenticate')} className="text-lg">Log In</Button>
+        <div className="flex gap-2">
+          <Button variant='default' onClick={() => router.push('/authenticate')} className="text-base">Log In</Button>
+          <ModeToggle />
         </div>
       </div>
     </header>

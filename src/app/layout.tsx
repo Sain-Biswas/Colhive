@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import { Toaster } from "@/components/ui/sonner";
+import AuthContext from "./AuthContext";
+import { ThemeProvider } from "./theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +21,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className='bg-background font-mono'>
-        <Navbar />
-        {children}
+        <AuthContext>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </AuthContext>
       </body>
     </html>
   );

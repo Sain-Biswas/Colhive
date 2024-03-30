@@ -21,6 +21,11 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
         event.preventDefault()
         setIsLoading(true)
 
+        const target = event.target as typeof event.target & {
+            email: { value: string };
+            password: { value: string };
+        };
+
         setTimeout(() => {
             setIsLoading(false)
         }, 3000)
@@ -42,6 +47,7 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
                                 autoCapitalize="none"
                                 autoComplete="email"
                                 autoCorrect="off"
+                                className="text-xs"
                                 disabled={isLoading}
                             />
                         </div>
@@ -56,6 +62,7 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
                                     id="password"
                                     autoCapitalize="none"
                                     autoCorrect="off"
+                                    className="text-xs"
                                     disabled={isLoading}
                                 />
                                 <Button size='icon' variant='outline' onClick={(event: any) => {

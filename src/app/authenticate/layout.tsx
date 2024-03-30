@@ -7,8 +7,8 @@ const Layout = ({
 }>) => {
     return (
         <div className='md:grid md:grid-cols-2 w-screen'>
-            <div>
-                Giffy
+            <div className='flex justify-center items-center'>
+                <video src="" autoPlay loop></video>
             </div>
             <div>
                 {children}
