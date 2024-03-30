@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Logo } from "../resources/Images/images";
+import Link from "next/link";
 export function Footer(){
     return (
         <footer>
@@ -22,7 +23,7 @@ export function Footer(){
             </div>
             <div className="">
                 <h1 className="font-serif text-2xl leading-10">Others</h1>
-                <p className="font-serif ">About Us</p>
+                <Link href='/about' className="font-serif ">About Us</Link>
                 <p className="font-serif ">Term and Conditions</p>
                 <p className="font-serif ">Privacy policy</p>
                 <p className="font-serif ">Help</p>
