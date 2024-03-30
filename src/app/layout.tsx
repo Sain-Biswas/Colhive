@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='bg-background font-mono'>{children}</body>
+      <body className='bg-background font-mono'>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

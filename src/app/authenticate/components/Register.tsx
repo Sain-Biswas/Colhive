@@ -1,17 +1,21 @@
 "use client"
 
-import * as React from "react"
-
+import GoogleIcon from "@/resources/icons/google.png"
+import Image from "next/image"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
 import { Card, CardContent } from "@/components/ui/card"
+import EyeIcon from "@/resources/icons/EyeIcon"
+import EyeSlashedIcon from "@/resources/icons/EyeSlashedIcon"
+import { useState } from "react"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 export default function Register({ className, ...props }: UserAuthFormProps) {
-    const [isLoading, setIsLoading] = React.useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isShow, setIsShow] = useState<boolean>(false);
 
     async function onSubmit(event: React.SyntheticEvent) {
         event.preventDefault()
@@ -28,6 +32,20 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
                 <form onSubmit={onSubmit}>
                     <div className="grid gap-2">
                         <div className="grid gap-1">
+                            <Label className="" htmlFor="name">
+                                Name
+                            </Label>
+                            <Input
+                                id="name"
+                                placeholder="Enter your name here ..."
+                                type="text"
+                                autoCapitalize="none"
+                                autoComplete="name"
+                                autoCorrect="off"
+                                disabled={isLoading}
+                            />
+                        </div>
+                        <div className="grid gap-1">
                             <Label className="" htmlFor="email">
                                 Email
                             </Label>
@@ -40,6 +58,29 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
                                 autoCorrect="off"
                                 disabled={isLoading}
                             />
+                        </div>
+                        <div className="grid gap-1">
+                            <Label className="" htmlFor="password">
+                                Password
+                            </Label>
+                            <div className="flex gap-1">
+                                <Input
+                                    type={(isShow) ? "password" : "text"}
+                                    placeholder="Enter your password here ..."
+                                    id="password"
+                                    autoCapitalize="none"
+                                    autoCorrect="off"
+                                    disabled={isLoading}
+                                />
+                                <Button size='icon' variant='outline' onClick={(event: any) => {
+                                    event.preventDefault();
+                                    setIsShow(current => !current)
+                                }}>
+                                    {
+                                        (isShow) ? (<EyeIcon className="" />) : (<EyeSlashedIcon className="" />)
+                                    }
+                                </Button>
+                            </div>
                         </div>
                         <Button disabled={isLoading}>
                             {isLoading && (
@@ -66,6 +107,14 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
                         <GitHubLogoIcon className="mr-2 h-4 w-4" />
                     )}{" "}
                     GitHub
+                </Button>
+                <Button variant="outline" type="button" disabled={isLoading}>
+                    {isLoading ? (
+                        <div className="mr-2 h-4 w-4 animate-spin" />
+                    ) : (
+                        <Image src={GoogleIcon} alt="" width={2046} height={2046} className="mr-2 h-4 w-4" />
+                    )}{" "}
+                    Google
                 </Button>
             </CardContent>
         </Card>

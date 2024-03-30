@@ -1,12 +1,12 @@
 "use client"
 
 import GoogleIcon from "@/resources/icons/google.png"
+import Image from "next/image"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
 import { Card, CardContent } from "@/components/ui/card"
-import Image from "next/image"
 import { SyntheticEvent, useState } from "react"
 import EyeIcon from "@/resources/icons/EyeIcon"
 import EyeSlashedIcon from "@/resources/icons/EyeSlashedIcon"
