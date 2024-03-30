@@ -63,7 +63,8 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
     }
 
     return (
-        <Card>
+        <div className="flex justify-center items-center">
+        <Card className="flex justify-center items-center">
             <CardContent className="grid gap-6 p-5">
                 <form onSubmit={onSubmit}>
                     <div className="grid gap-2">
@@ -144,5 +145,6 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
                 </div>
             </CardContent>
         </Card>
+        </div>
     )
 }
