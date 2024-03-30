@@ -79,22 +79,22 @@ export function Navbar({ currentUser }: { currentUser: User | null }) {
         <div className="Tabs flex items-center justify-center">
           <NavigationMenu>
             <NavigationMenuList>
-            <NavigationMenuItem>
-                <Link href="/docs" legacyBehavior passHref>
+              <NavigationMenuItem>
+                <Link href="/" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                   Home
+                    Home
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/docs" legacyBehavior passHref>
+                <Link href="/dashboard" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Dashboard
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/docs" legacyBehavior passHref>
+                <Link href="/projects" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Project
                   </NavigationMenuLink>
