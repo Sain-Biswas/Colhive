@@ -1,46 +1,36 @@
 import * as React from "react"
+import { Logo } from "../resources/Images/images";
 export function Footer(){
     return (
         <footer>
-            <div className="flex justify-between items-center w-full h-auto bg-[#F5EFDB]">
-            <div className=" px-2 py-4 ">
-                <div className="text-center  bg-[]">
-                 
-                  <h1 className="">Subscribe To Our Newsletter</h1>
-                  <p className=''>And never miss latest Updates!</p>
-                </div>
-                <div className="">
-                   <input type="email" placeholder="Enter your E-mail address"/>
-                   <button className="">Subscribe</button>
-                </div>
-            </div>
-             <div className="">
+            <div className=" px-8 ">
+             <div className="flex justify-between ">
             <div className="">
-                <h1 className="">Contact Us</h1>
-                <p className="">Chandigarh University</p>
-                <p className="">NH-05 Chandigarh-Ludhiana Highway</p>
-                <p className="">Mohali,Punjab</p>
-                <p className="">6303660509</p>
+                <h1 className=" font-serif text-2xl leading-10">Contact Us</h1>
+                <p className="font-serif ">Chandigarh University</p>
+                <p className="font-serif">NH-05 Chandigarh-Ludhiana Highway</p>
+                <p className="font-serif ">Mohali,Punjab</p>
+                <p className="font-serif ">6303660509</p>
 
             </div>
             <div className="">
-               <img src="" alt="footer_logo"/>
-               <p className="">The best way to get your meals</p>
-               <img src="" alt="" className="" style={{marginTop:15}}/>
-               <div className="">
+               <img className="h-10 w-auto z-10" src={Logo} alt="" height={2000} width={2000} />
+               <p className="">Community for Developer</p>
+               {/* <div className="">
                 
-               </div>
+               </div> */}
             </div>
             <div className="">
-                <h1 className="">Others</h1>
-                <p className="">About Us</p>
-                <p className="">Term and Conditions</p>
-                <p className="">Privacy policy</p>
-                <p className="">Help</p>
+                <h1 className="font-serif text-2xl leading-10">Others</h1>
+                <p className="font-serif ">About Us</p>
+                <p className="font-serif ">Term and Conditions</p>
+                <p className="font-serif ">Privacy policy</p>
+                <p className="font-serif ">Help</p>
             </div>
         </div>
-        <div className="">
-            <p className="">2024 © ColHive| All right reserved.</p>
+        
+        <div className="w-full h-10 flex justify-center items-center text-center static bottom-0">
+            <p className="font-serif">2024 © ColHive| All right reserved.</p>
         </div>
         
     </div>

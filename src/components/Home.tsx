@@ -15,13 +15,13 @@ export function Home() {
                         the ultimate platform for streamlined collaboration and project management.
                     </p>
                 </div>
-                <div>
-                    <Button variant="outline">Explore More</Button>
+                <div className="mb-5 mt-0">
+                    <Button className="bg-[#26275e99]" variant="outline">Explore More</Button>
                 </div>
             </div>
             <div className="w-1/2 flex justify-center items-center ">
                 
-                <img className="w-full h-auto z-10" src={bg_home} alt="ColHive Background" />
+            <img src="{Logo}" alt="colhive home" />
             </div>
         </section>
     );
