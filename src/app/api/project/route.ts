@@ -1,5 +1,5 @@
-import prisma from "@/app/resources/libs/prismadb";
-import { pusherServer } from "@/app/resources/libs/pusher";
+import prisma from "@/resources/prismadb";
+import { pusherServer } from "@/lib/pusher";
 import { NextResponse } from "next/server";
 
 

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import '@radix-ui/themes/styles.css';
+import { Theme } from '@radix-ui/themes';
 import { Toaster } from "@/components/ui/sonner";
 import AuthContext from "./AuthContext";
 import { ThemeProvider } from "./theme-provider";
@@ -22,16 +24,18 @@ export default function RootLayout({
     <html lang="en">
       <body className='bg-background font-mono'>
         <AuthContext>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <NavbarProfile />
-            {children}
-            <Toaster />
-          </ThemeProvider>
+          <Theme>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <NavbarProfile />
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </Theme>
         </AuthContext>
       </body>
     </html>
