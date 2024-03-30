@@ -1,16 +1,11 @@
+import getCurrentUser from "@/resources/actions/getCurrentUser";
 
-import {Navbar} from "../components/Navbar";
-import { Home } from "../components/Home";
-import { Footer } from "../components/Footer";
 
-export default function First() {
+export default async function Home() {
+  const data = await getCurrentUser();
   return (
     <main >
-     <div >
-        {/* <Navbar/> */}
-        <Home/>
-        <Footer/>
-     </div>
+      {JSON.stringify(data)}
     </main>
   );
 }
