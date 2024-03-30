@@ -1,4 +1,4 @@
-import prisma from '@/app/resources/libs/prismadb';
+import prisma from '@/resources/prismadb';
 
 const getProjectById = async (projectId: string) => {
     try {

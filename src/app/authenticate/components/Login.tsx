@@ -2,6 +2,7 @@
 
 import GoogleIcon from "@/resources/icons/google.png"
 import Image from "next/image"
+import { signIn } from 'next-auth/react'
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -10,12 +11,30 @@ import { Card, CardContent } from "@/components/ui/card"
 import { SyntheticEvent, useState } from "react"
 import EyeIcon from "@/resources/icons/EyeIcon"
 import EyeSlashedIcon from "@/resources/icons/EyeSlashedIcon"
+import { toast } from "sonner"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 export default function Register({ className, ...props }: UserAuthFormProps) {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isShow, setIsShow] = useState<boolean>(false);
+
+    const socialAction = (action: string) => {
+        setIsLoading(true);
+
+        signIn(action, { redirect: false })
+            .then((callback: any) => {
+                if (callback?.error) {
+                    toast.error('Something went wrong');
+                }
+
+                if (callback?.ok && !callback?.error) {
+                    toast.success('Logged In');
+                }
+            }).finally(() => {
+                setIsLoading(false);
+            })
+    };
 
     async function onSubmit(event: SyntheticEvent) {
         event.preventDefault()
@@ -26,9 +45,21 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
             password: { value: string };
         };
 
-        setTimeout(() => {
-            setIsLoading(false)
-        }, 3000)
+        signIn('credentials', {
+            email: target.email.value,
+            password: target.password.value,
+            redirect: false
+        }).then((callback) => {
+            if (callback?.error) {
+                toast.error(callback.error);
+            }
+
+            if (callback?.ok && !callback?.error) {
+                toast.success('Logged In');
+            }
+        }).finally(() => {
+            setIsLoading(false);
+        });
     }
 
     return (
@@ -94,7 +125,7 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
                     </div>
                 </div>
                 <div className="grid gap-2">
-                    <Button variant="outline" type="button" disabled={isLoading}>
+                    <Button variant="outline" type="button" disabled={isLoading} onClick={() => socialAction('github')}>
                         {isLoading ? (
                             <div className="mr-2 h-4 w-4 animate-spin" />
                         ) : (
@@ -102,7 +133,7 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
                         )}{" "}
                         GitHub
                     </Button>
-                    <Button variant="outline" type="button" disabled={isLoading}>
+                    <Button variant="outline" type="button" disabled={isLoading} onClick={() => socialAction('google')}>
                         {isLoading ? (
                             <div className="mr-2 h-4 w-4 animate-spin" />
                         ) : (

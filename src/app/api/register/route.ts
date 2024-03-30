@@ -1,5 +1,5 @@
-import prisma from "@/app/resources/libs/prismadb";
-import bcrypt from "bcrypt";
+import prisma from "@/resources/prismadb";
+import bcrypt from 'bcryptjs';
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -8,7 +8,8 @@ export async function POST(request: Request) {
         const {
             email,
             name,
-            password
+            password,
+            role
         } = body;
 
         if (!email || !name || !password) {
@@ -21,6 +22,7 @@ export async function POST(request: Request) {
             data: {
                 email,
                 name,
+                role,
                 hashedPassword
             }
         });

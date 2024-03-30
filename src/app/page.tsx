@@ -1,9 +1,11 @@
+import getCurrentUser from "@/resources/actions/getCurrentUser";
 
 
-export default function Home() {
+export default async function Home() {
+  const data = await getCurrentUser();
   return (
     <main >
-      Home
+      {JSON.stringify(data)}
     </main>
   );
 }

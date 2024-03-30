@@ -1,10 +1,5 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import Link from "next/link"
-import { Logo } from "../resources/Images/images";
-import { cn } from "@/lib/utils"
-// import { Icons } from "@/components/icons"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,12 +8,20 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import { headers } from "next/headers"
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import getCurrentUser from "@/resources/actions/getCurrentUser";
+import { User } from "@prisma/client";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { Button } from "./ui/button";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import * as React from "react";
+import { Logo } from "../resources/Images/images";
 import { ModeToggle } from "./mode-toggle";
+import NavbarDropdown from "./navbar-dropdown";
+import NavbarProfile from "./navbar-profile";
+import { Button } from "./ui/button";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -58,8 +61,11 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 
-export function Navbar() {
+export function Navbar({ currentUser }: { currentUser: User | null }) {
   const router = useRouter();
+
+  const session = useSession();
+  const authenticated = session.status === 'authenticated';
 
   return (
     <header className="h-12 border-b-2">
@@ -74,7 +80,6 @@ export function Navbar() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-
                 <NavigationMenuTrigger>Home</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -84,7 +89,6 @@ export function Navbar() {
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                           href="/"
                         >
-                          {/* <Icons.logo className="h-6 w-6" /> */}
                           <div className="mb-2 mt-4 text-lg font-medium">
                             shadcn/ui
                           </div>
@@ -136,14 +140,17 @@ export function Navbar() {
           </NavigationMenu>
         </div>
         <div className="flex gap-2">
-          <Button variant='default' onClick={() => router.push('/authenticate')} className="text-base">Log In</Button>
+          <div>
+            {
+              (!authenticated) ? (
+                <Button variant='default' onClick={() => router.push('/authenticate')} className="text-base">Log In</Button>
+              ) : (< NavbarDropdown currentUser={currentUser} />)
+            }
+          </div>
           <ModeToggle />
         </div>
       </div>
     </header>
-
-
-
   )
 }
 

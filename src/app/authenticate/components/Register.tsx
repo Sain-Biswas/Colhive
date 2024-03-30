@@ -2,7 +2,7 @@
 
 import GoogleIcon from "@/resources/icons/google.png"
 import { signIn } from 'next-auth/react'
-import axios from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import Image from "next/image"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
@@ -47,7 +47,14 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
             password: { value: string };
         };
 
-        await axios.post('')
+        await axios.post('/api/register', { name: target.name.value, role: target.role.value, email: target.email.value, password: target.password.value })
+            .then((response: AxiosResponse) => {
+                signIn('credentials', { email: target.email.value, password: target.password.value });
+                toast.success('Account created Successfully', { description: "redirecting to dashboard" })
+            })
+            .catch((error: AxiosError) => {
+                toast.error('Account creation Failed', { description: 'Retry Again' })
+            })
     }
 
     return (
@@ -143,7 +150,7 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
                     </div>
                 </div>
                 <div className="grid gap-1">
-                    <Button variant="outline" type="button" disabled={isLoading}>
+                    <Button variant="outline" type="button" disabled={isLoading} onClick={() => socialAction('github')}>
                         {isLoading ? (
                             <div className="mr-2 h-4 w-4 animate-spin" />
                         ) : (
@@ -151,7 +158,7 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
                         )}{" "}
                         GitHub
                     </Button>
-                    <Button variant="outline" type="button" disabled={isLoading}>
+                    <Button variant="outline" type="button" disabled={isLoading} onClick={() => socialAction('google')}>
                         {isLoading ? (
                             <div className="mr-2 h-4 w-4 animate-spin" />
                         ) : (

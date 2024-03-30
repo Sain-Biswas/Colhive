@@ -1,4 +1,4 @@
-import prisma from '@/app/resources/libs/prismadb';
+import prisma from '@/resources/prismadb';
 import getCurrentUser from './getCurrentUser';
 
 const getProjects = async () => {

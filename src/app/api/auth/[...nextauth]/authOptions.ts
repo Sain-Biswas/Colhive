@@ -1,11 +1,11 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 
-import prisma from "@/app/resources/libs/prismadb";
+import prisma from "@/resources/prismadb";
 
 export const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma),
@@ -48,7 +48,7 @@ export const authOptions: AuthOptions = {
                     throw new Error('Incorrect Password \n Please try again');
                 }
 
-                return user;
+                return { email: user.email } as any;
             },
         })
     ],

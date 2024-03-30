@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import AuthContext from "./AuthContext";
 import { ThemeProvider } from "./theme-provider";
+import NavbarProfile from "@/components/navbar-profile";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +28,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar />
+            <NavbarProfile />
             {children}
             <Toaster />
           </ThemeProvider>
