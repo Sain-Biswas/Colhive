@@ -137,7 +137,7 @@ const NewProjects: React.FC<NewProjectsProps> = ({ initialProjects, currentUser 
                                 <CheckboxGroup.Root defaultValue={members} onValueChange={(e: string[]) => setMembers(e)} variant='surface' color='indigo' name='members' className='w-full flex flex-col gap-1'>
                                     {
                                         (initialProjects.map((user: User) => (
-                                            <CheckboxGroup.Item value={user.id} className='p-1 text-xs'>
+                                            <CheckboxGroup.Item value={user.id} className='p-1 text-xs' key={user.id}>
                                                 {user.email}
                                             </CheckboxGroup.Item>
                                         )))

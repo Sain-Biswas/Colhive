@@ -140,7 +140,7 @@ const MessageProfile: React.FC<MessageProfileProprs> = ({ data, statusText }) =>
                             >
                                 {
                                     data.isGroup && data.users.map((user) => (
-                                        <div className="flex gap-3 my-2">
+                                        <div key={user.id} className="flex gap-3 my-2">
                                             <Avatar>
                                                 <AvatarImage src={user.image || undefined} alt="" />
                                                 <AvatarFallback><PersonIcon className="" /></AvatarFallback>
