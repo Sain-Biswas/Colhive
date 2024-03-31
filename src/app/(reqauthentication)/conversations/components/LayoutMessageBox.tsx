@@ -12,7 +12,7 @@ interface LayoutMessageBoxProps {
 const LayoutMessageBox: React.FC<LayoutMessageBoxProps> = ({ users, conversations }) => {
     const path = usePathname();
 
-    if (path === '/user/chats/conversations') {
+    if (path === '/conversations') {
         return (
             <div className="w-full h-full flex">
                 <ConversationList

@@ -6,7 +6,7 @@ import { Conversation, User as USER } from "@prisma/client";
 import Link from "next/link";
 import { useMemo } from "react";
 import MessageProfile from "./MessageProfile";
-import { ChevronRightIcon, DotsHorizontalIcon, PersonIcon } from "@radix-ui/react-icons";
+import { ChevronLeftIcon, DotsHorizontalIcon, PersonIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -33,16 +33,16 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
 
     return (
         <div
-            className="bg-white dark:bg-[#001C30] w-full flex border-b-[1px] py-2 px-4 lg:px-6 justify-between items-center shadow-sm"
+            className="w-full flex border-b-[1px] py-2 px-4 lg:px-6 justify-between items-center shadow-sm"
         >
             <div
                 className="flex gap-3 items-center"
             >
                 <Link
-                    className="lg:hidden block text-sky-500 hover:text-sky-700 transition cursor-pointer"
-                    href="/user/chats/conversations"
+                    className="lg:hidden block transition cursor-pointer"
+                    href="/conversations"
                 >
-                    <ChevronRightIcon className="" />
+                    <ChevronLeftIcon className="w-6 h-6" />
                 </Link>
                 <Avatar className="">
                     <AvatarImage src={conversation.image || otherUser.image || undefined} alt="" />
@@ -67,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
                         <DotsHorizontalIcon className="" />
                     </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="max-w-[90vw]">
                     <DialogHeader>
                         Profile
                     </DialogHeader>

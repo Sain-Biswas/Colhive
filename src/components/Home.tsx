@@ -10,10 +10,10 @@ export function Home() {
             <div className="w-1/2 p-2 flex justify-between items-center flex-col bg-origin-border rounded-3xl bg-[#F5EFDB]/60 relative left-7">
                 <div className="w-full h-80 p-10 ">
                     <h1 className="font-bold text-6xl leading-2   font-serif text-black-500">
-                        Welcome to <span className="flex justify-center items-center text-purple-500" > ColHive  </span>  
+                        Welcome to <span className="flex justify-center items-center text-purple-500" > ColHive  </span>
                     </h1>
                     <p className="flex justify-center text-center item-center text-xl leading-20">
-                        Elevate your team's productivity with ColHive,
+                        Elevate your team&aps;s productivity with ColHive,
                         the ultimate platform for streamlined collaboration and project management.
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                     </p>
@@ -24,7 +24,7 @@ export function Home() {
             </div>
             <div className="w-3/4 flex justify-center items-center ">
 
-                <Image src={bg_home} alt="colhive home" width={2046} height={2046} className="rounded-xl" />
+                <Image src={bg_home} alt="colhive_home" width={2046} height={2046} className="rounded-xl" />
             </div>
         </section>
     );

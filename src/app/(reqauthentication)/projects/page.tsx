@@ -10,7 +10,7 @@ const Page = async () => {
             <p>My Projects</p>
             <div className='flex flex-wrap gap-3 justify-stretch'>
                 {
-                    projects.map((project: FullProjectType) => (<ProjectCard project={project} />))
+                    projects.map((project: FullProjectType) => (<ProjectCard key={project.id} project={project} />))
                 }
             </div>
         </div>

@@ -32,30 +32,31 @@ const MessageForm = () => {
 
     return (
         <div
-            className="bg-white dark:bg-[#001C30] text-black p-2 lg:p-[0.6rem] border-t flex items-center gap-2 lg:gap-4 w-full"
+            className="p-2 lg:p-[0.6rem] border-t flex items-center gap-2 lg:gap-4 w-full"
         >
             <CldUploadButton
                 options={{ maxFiles: 1 }}
-                onUpload={handleImageUpload}
+                onSuccess={handleImageUpload}
                 uploadPreset="gwzesufu"
             >
-                <Link2Icon className="text-sky-500" />
+                <Link2Icon className="text-sky-500 w-6 h-6" />
             </CldUploadButton>
-
-            <Input
-                className=""
-                value={message}
-                placeholder="Message..."
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
-            />
-            <Button
-                disabled={(message === '') ? true : false}
-                className="w-8 h-8"
-                size='icon'
-                onClick={handleSubmit}
-            >
-                <PaperPlaneIcon className="-rotate-45 w-5 h-5" />
-            </Button>
+            <form onSubmit={handleSubmit} className="flex flex-grow gap-2">
+                <Input
+                    className=""
+                    value={message}
+                    placeholder="Message..."
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
+                />
+                <Button
+                    disabled={(message === '') ? true : false}
+                    className="w-10 h-9"
+                    size='icon'
+                    onClick={handleSubmit}
+                >
+                    <PaperPlaneIcon className="-rotate-45 w-5 h-5" />
+                </Button>
+            </form>
         </div>
     )
 }

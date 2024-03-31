@@ -10,14 +10,14 @@ export default async function LayOut({ children }: { children: React.ReactNode }
 
     return (
         <>
-            <div className="hidden w-full h-full lg:flex">
+            <div className="hidden w-full h-[calc(100vh-3rem)] lg:flex">
                 <ConversationList
                     users={users}
                     initialItems={conversations}
                 />
                 {children}
             </div>
-            <div className="w-full h-full flex lg:hidden">
+            <div className="w-full h-[calc(100vh-3rem)] flex lg:hidden">
                 <LayoutMessageBox
                     users={users}
                     conversations={conversations}
