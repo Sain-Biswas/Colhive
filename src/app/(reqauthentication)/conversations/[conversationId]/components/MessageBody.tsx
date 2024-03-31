@@ -65,7 +65,7 @@ const MessageBody: React.FC<BodyProps> = ({ initialMessages }) => {
     return (
         <ScrollArea
             ref={bottomRef}
-            className="flex flex-1 flex-col h-full"
+            className="flex flex-1 flex-col h-[calc(82.7vh-3rem)]"
         >
             {
                 messages.map((message, i) => (

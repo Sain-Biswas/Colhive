@@ -100,7 +100,13 @@ export function Navbar({ currentUser }: { currentUser: User | null }) {
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-
+              <NavigationMenuItem>
+                <Link href="/conversations" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Conversations
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>

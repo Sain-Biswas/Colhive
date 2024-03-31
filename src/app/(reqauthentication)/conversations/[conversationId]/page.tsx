@@ -23,7 +23,7 @@ const ConversationMessages = async ({ params }: { params: IParams }) => {
 
     return (
         <div
-            className="flex flex-col w-full h-[91vh]"
+            className="flex flex-col w-full h-[calc(100vh-3.2rem)]"
         >
             <div
                 className="h-[10vh]"
@@ -31,12 +31,12 @@ const ConversationMessages = async ({ params }: { params: IParams }) => {
                 <Header conversation={conversation} />
             </div>
             <div
-                className="h-[72vh]"
+                className="flex-grow"
             >
                 <MessageBody initialMessages={messages} />
             </div>
             <div
-                className="h-[10vh]"
+                className="h-[9vh]"
             >
                 <MessageForm />
             </div>

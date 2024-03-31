@@ -62,7 +62,7 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({ data, selected }) => 
     return (
         <Button
             variant='ghost'
-            className={`p-3 ring-1 lg:p-2 mb-2 lg:mb-2 w-full relative flex items-center space-x-3 rounded-lg transition cursor-pointer ${selected ? 'bg-primary' : ''}`}
+            className={`p-3 ring-1 lg:p-2 mb-2 h-fit lg:mb-2 w-full relative flex items-center space-x-3 rounded-lg transition cursor-pointer ${selected ? 'bg-primary' : ''}`}
             onClick={handleClick}
         >
             <Avatar>
@@ -76,23 +76,23 @@ const ConversationBox: React.FC<ConversationBoxProps> = ({ data, selected }) => 
                     className="focus:outline-none"
                 >
                     <div
-                        className="flex justify-between items-center mb-1"
+                        className="flex justify-between mb-1"
                     >
                         <p
-                            className="text-lg font-semibold text-gray-900 dark:text-white"
+                            className="text-lg font-semibold"
                         >
                             {data.name || otherUser.name}
                         </p>
                         {lastMessage?.createdAt && (
                             <p
-                                className="text-xs text-gray-400 font-light"
+                                className="text-xs  font-light"
                             >
                                 {format(new Date(lastMessage.createdAt), 'p')}
                             </p>
                         )}
                     </div>
                     <p
-                        className={`truncate text-sm ${hasSeen ? 'text-gray-500 dark:text-gray-300' : 'text-black dark:text-white font-medium'}`}
+                        className={`truncate w-full text-left text-sm ${hasSeen ? '' : 'font-medium'}`}
                     >
                         {lastMessageText}
                     </p>

@@ -15,7 +15,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
         <Card>
             <CardHeader>
-                <CardTitle className='text-2xl'>
+                <CardTitle className='text-2xl text-center'>
                     {project.name}
                 </CardTitle>
                 <CardContent className='flex flex-col items-center justify-center gap-2'>

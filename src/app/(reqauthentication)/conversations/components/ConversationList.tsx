@@ -96,7 +96,7 @@ export default function ConversationList({ initialItems, users }: { initialItems
 
     return (
         <aside
-            className="pb-10 lg:p-0 px-3 lg:pb-0 lg:left-10 lg:w-80 lg:block overflow-y-auto border-r border-gray-200 block w-full left-0"
+            className="pb-10 lg:p-0 px-3 lg:pb-0 lg:left-10 lg:w-96 lg:block overflow-y-auto border-r border-2 block w-full left-0"
         >
             <div
                 className="px-1"
@@ -105,10 +105,10 @@ export default function ConversationList({ initialItems, users }: { initialItems
                     className="flex-col"
                 >
                     <div
-                        className="text-4xl font-bold dark:text-white text-neutral-800 p-4 lg:p-2 flex flex-row justify-between"
+                        className="text-4xl font-bold p-4 lg:p-2 flex flex-row justify-between"
                     >
                         <div>
-                            Messages
+                            Conversations
                         </div>
                     </div>
                     {

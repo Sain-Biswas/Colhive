@@ -64,7 +64,7 @@ const MessageProfile: React.FC<MessageProfileProprs> = ({ data, statusText }) =>
                 {
                     !data.isGroup && (
                         <p
-                            className="text-md text-gray-500"
+                            className="text-xs text-gray-500"
                         >
                             {otherUser.email}
                         </p>
@@ -140,14 +140,14 @@ const MessageProfile: React.FC<MessageProfileProprs> = ({ data, statusText }) =>
                             >
                                 {
                                     data.isGroup && data.users.map((user) => (
-                                        <div className="flex gap-3">
+                                        <div className="flex gap-3 my-2">
                                             <Avatar>
                                                 <AvatarImage src={user.image || undefined} alt="" />
                                                 <AvatarFallback><PersonIcon className="" /></AvatarFallback>
                                             </Avatar>
                                             <div>
-                                                <p>{user.name}</p>
-                                                <p>{user.email}</p>
+                                                <p className="text-base">{user.name}</p>
+                                                <p className="text-xs">{user.email}</p>
                                             </div>
                                         </div>
                                     ))

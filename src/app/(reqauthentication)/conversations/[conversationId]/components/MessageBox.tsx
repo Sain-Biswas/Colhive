@@ -26,7 +26,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
     const container = `flex gap-3 p-4 ${isOwn && 'justify-end'}`;
     const avatar = `${isOwn && 'order-2'}`;
     const body = `flex flex-col gap-2 ${isOwn && 'items-end'}`;
-    const message = `text-sm w-fit overflow-hidden ${(isOwn && !data.image) ? 'bg-sky-500 text-white' : 'bg-gray-100 text-black'} ${data.image ? 'rounded-md bg-transparent p-0' : 'rounded-xl py-2 px-3'}`
+    const message = `text-sm w-fit overflow-hidden ${(isOwn && !data.image) ? 'bg-primary text-white' : 'bg-secondary'} ${data.image ? 'rounded-md bg-transparent p-0' : 'rounded-xl py-2 px-3'}`
 
     return (
         <div
@@ -61,31 +61,27 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
                     className={message}
                 >
                     {data.image ? (
-                        // <Image
-                        //     alt="Can't load Image"
-                        //     height={300}
-                        //     width={300}
-                        //     src={data.image}
-                        //     className="object-cover cursor-pointer hover:scale-110 transition translate "
-                        // />
                         <Dialog>
                             <DialogTrigger asChild>
                                 <Button
-                                    className="h-fit w-fit p-0 m-0 bg-transparent"
+                                    className="overflow-hidden rounded-md"
+                                    variant='outline'
                                 >
-                                    {/* <MdZoomOutMap /> */}
-                                    <Image
+                                    {/* <Image
                                         src={data.image}
                                         alt="Can't load Image"
-                                        className="h-60 z-0"
-                                    />
+                                        fill
+                                        className="h-36 z-0 max-w-80 overflow-hidden object-contain"
+                                    /> */}
+                                    Open Image
                                 </Button>
                             </DialogTrigger>
-                            <DialogContent>
+                            <DialogContent className="h-[90vh] max-w-[80vw]">
                                 <Image
                                     src={data.image}
                                     layout="fill"
                                     alt="Can't load Image"
+                                    className="object-contain"
                                 />
                             </DialogContent>
                         </Dialog>

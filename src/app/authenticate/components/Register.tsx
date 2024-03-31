@@ -13,6 +13,7 @@ import EyeIcon from "@/resources/icons/EyeIcon"
 import EyeSlashedIcon from "@/resources/icons/EyeSlashedIcon"
 import { useState } from "react"
 import { toast } from "sonner";
+import clsx from "clsx";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -47,12 +48,14 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
             password: { value: string };
         };
 
+
         await axios.post('/api/register', { name: target.name.value, role: target.role.value, email: target.email.value, password: target.password.value })
-            .then((response: AxiosResponse) => {
-                signIn('credentials', { email: target.email.value, password: target.password.value });
-                toast.success('Account created Successfully', { description: "redirecting to dashboard" })
+            .then((response) => {
+                toast.success('Account created Successfully', { description: "redirecting to dashboard" });
+                signIn('credentials', { email: target.email.value, password: target.password.value, redirect: false });
+                console.log(response.data);
             })
-            .catch((error: AxiosError) => {
+            .catch((error) => {
                 toast.error('Account creation Failed', { description: 'Retry Again' })
             })
     }
