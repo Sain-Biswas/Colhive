@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import bg_home from "../resources/Images/bg_home.jpg";
 import Image from "next/image";
 
@@ -18,8 +19,8 @@ export function Home() {
                     </p>
                 </div>
                 <div className=" mb-5 mt-0 z-40">
-                    <Button className="bg-[#26275e99] font-serif" variant="outline">Explore More</Button>
-                </div>
+                    <Button className="bg-[#26275e99] font-serif" variant="outline"><Link href='/about'>Explore More</Link></Button>
+                </div> 
             </div>
             <div className="w-3/4 flex justify-center items-center ">
 
