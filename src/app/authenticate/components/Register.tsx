@@ -1,19 +1,19 @@
 "use client"
 
-import GoogleIcon from "@/resources/icons/google.png"
-import { signIn } from 'next-auth/react'
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import EyeIcon from "@/resources/icons/EyeIcon";
+import EyeSlashedIcon from "@/resources/icons/EyeSlashedIcon";
+import GoogleIcon from "@/resources/icons/google.png";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import Image from "next/image"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { GitHubLogoIcon } from "@radix-ui/react-icons"
-import { Card, CardContent } from "@/components/ui/card"
-import EyeIcon from "@/resources/icons/EyeIcon"
-import EyeSlashedIcon from "@/resources/icons/EyeSlashedIcon"
-import { useState } from "react"
-import { toast } from "sonner";
 import clsx from "clsx";
+import { signIn } from 'next-auth/react';
+import Image from "next/image";
+import { useState } from "react";
+import { toast } from "sonner";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -48,17 +48,15 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
             password: { value: string };
         };
 
+        const [email, name, password, role] = [target.email.value, target.name.value, target.password.value, target.role.value];
 
-        await axios.post('/api/register', { name: target.name.value, role: target.role.value, email: target.email.value, password: target.password.value })
-            .then((response) => {
-                toast.success('Account created Successfully', { description: "redirecting to dashboard" });
-                signIn('credentials', { email: target.email.value, password: target.password.value, redirect: false });
-                console.log(response.data);
-            })
-            .catch((error) => {
-                toast.error('Account creation Failed', { description: 'Retry Again' })
-            })
+
+        await axios.post('/api/register', { email, name, password, role }).then((res) => {
+            signIn('credentials', { email, password });
+            toast.success('Account created Successfully');
+        }).catch((err) => toast.error('Try Again')).finally(() => setIsLoading(false));
     }
+
 
     return (
         <Card>
@@ -172,5 +170,5 @@ export default function Register({ className, ...props }: UserAuthFormProps) {
                 </div>
             </CardContent>
         </Card>
-    )
+    );
 }
